@@ -1,16 +1,17 @@
-$(document).ready(function()
-{
- $('form').ajaxForm(function()
- {
-  alert("Uploaded SuccessFully");
- });
-});
+var slideIndex = 1;
+showDivs(slideIndex);
 
-function preview_image()
-{
- var total_file=document.getElementById("upload_file").files.length;
- for(var i=0;i<total_file;i++)
- {
-  $('#image_preview').append("<div class='column'><img src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
- }
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
 }
